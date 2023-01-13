@@ -236,7 +236,7 @@ GROUP BY title
 ORDER BY COUNT(title) DESC;
 
 -- Practicing SQL clauses from https://www.w3schools.com/SQL/default.asp
-SELECT * FROM departments;
+SELECT * FROM departments; -- check table names and data types
 
 CREATE TABLE testing (
 	dept_no VARCHAR(4) NOT NULL,
@@ -251,10 +251,7 @@ SELECT COUNT(DISTINCT dept_name) FROM testing;
 
 -- Practice manipulating tables
 ALTER TABLE testing
-ADD specific_letters INT;
-
-UPDATE testing
-SET specific_letters=1;
+ADD specific_letters INT DEFAULT 1;
 
 UPDATE testing
 SET specific_letters=0
@@ -274,4 +271,26 @@ DROP COLUMN drop_this;
 ALTER TABLE testing 
 DROP COLUMN specific_letters;
 
--- DROP TABLE testing
+DROP TABLE testing
+
+-- Practice creating and using an index
+SELECT * FROM dept_emp;
+
+DROP TABLE IF EXISTS indexing;
+
+SELECT emp_no, dept_no, from_date, to_date
+INTO indexing
+FROM dept_emp
+WHERE to_date = '9999-01-01';
+
+SELECT * FROM indexing;
+
+CREATE UNIQUE INDEX idx1
+ON indexing (emp_no);
+
+DROP INDEX idx1;
+
+DROP TABLE indexing;
+-- IDK what to do with this, but I created an index.
+
+-- Practice creating processes
