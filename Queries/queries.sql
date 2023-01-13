@@ -234,3 +234,44 @@ INTO retiring_titles
 FROM unique_titles
 GROUP BY title
 ORDER BY COUNT(title) DESC;
+
+-- Practicing SQL clauses from https://www.w3schools.com/SQL/default.asp
+SELECT * FROM departments;
+
+CREATE TABLE testing (
+	dept_no VARCHAR(4) NOT NULL,
+	dept_name VARCHAR(40) NOT NULL
+);
+
+-- Import the same CSV twice
+SELECT * FROM testing;
+
+SELECT DISTINCT dept_no FROM testing;
+SELECT COUNT(DISTINCT dept_name) FROM testing;
+
+-- Practice manipulating tables
+ALTER TABLE testing
+ADD specific_letters INT;
+
+UPDATE testing
+SET specific_letters=1;
+
+UPDATE testing
+SET specific_letters=0
+WHERE dept_name = 'Marketing';
+
+UPDATE testing
+SET specific_letters=0
+WHERE dept_name LIKE 'S%'
+RETURNING *;
+
+ALTER TABLE testing
+ADD drop_this FLOAT;
+
+ALTER TABLE testing
+DROP COLUMN drop_this;
+
+ALTER TABLE testing 
+DROP COLUMN specific_letters;
+
+-- DROP TABLE testing
