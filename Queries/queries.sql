@@ -294,3 +294,10 @@ DROP TABLE indexing;
 -- IDK what to do with this, but I created an index.
 
 -- Practice creating processes
+CREATE TABLE test (
+	test VARCHAR(20)
+);
+
+ALTER TABLE test RENAME TO testing;
+
+DROP TABLE testing;
